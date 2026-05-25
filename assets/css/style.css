@@ -1,0 +1,226 @@
+/* *========================================
+      * FONTS *
+*======================================== */
+/* --- space-mono-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/space-mono-v17-latin-700.woff2") format("woff2");
+}
+
+/* *========================================
+      * VARIABLES *
+*======================================== */
+:root {
+  /* ---=== color ===--- */
+  --color-green-900: hsl(183, 100%, 15%);
+  --color-green-400: hsl(172, 67%, 45%);
+  --color-green-200: hsl(173, 61%, 77%);
+
+  --color-grey-550: hsl(180, 18%, 40%);
+  --color-grey-500: hsl(186, 14%, 43%);
+  --color-grey-400: hsl(184, 14%, 56%);
+  --color-grey-200: hsl(185, 41%, 84%);
+  --color-grey-50: hsl(189, 47%, 97%);
+
+  --color-white: hsl(0, 100%, 100%);
+
+  /* ---=== fonts ===--- */
+  /** fonts size  */
+  --fs-13: 0.8125rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+  --fs-48: 3rem;
+
+  /** fonts weight */
+  --fw-bold: 700;
+}
+
+/* *========================================
+      * RESET *
+*======================================== */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2 {
+  padding: 0;
+}
+
+button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  /* Retire les bordures et ombres par défaut */
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  /* Garde la typographie et le fond du site */
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+/* *========================================
+      * BASE *
+*======================================== */
+body {
+  font-family: "Space Mono", sans-serif;
+  font-weight: var(--fw-bold);
+  background-color: var(--color-grey-200);
+  display: flex;
+  place-content: center;
+}
+
+h2 {
+  font-size: var(--fs-16);
+  line-height: 24px;
+}
+
+input {
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+
+  width: 100%;
+  font-size: var(--fs-24);
+  line-height: 36px;
+  text-align: right;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-grey-50);
+  color: var(--color-green-900);
+}
+
+.btn {
+  background-color: var(--color-green-900);
+  color: var(--color-white);
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  line-height: 36px;
+  height: 3rem;
+  border-radius: 5px;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s;
+}
+.btn:hover {
+  background-color: var(--color-green-200);
+  color: var(--color-green-900);
+}
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* *========================================
+      * MAIN *
+*======================================== */
+.img-title {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* ---=== CONTAINER ===--- */
+.container {
+  min-width: 23.4375rem; /* 375px */
+  margin-top: 9rem; /* 144px */
+  background-color: var(--color-white);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding: 2rem 1.5rem;
+}
+
+/* ---=== SECTION INFO ===--- */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info h2 {
+  color: var(--color-grey-500);
+}
+
+.info__bill > input {
+  /* icon $ */
+  background-image: url("../images/icon-dollar.svg");
+}
+
+.info__btn {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.info__btn > input {
+  height: 3rem;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color-grey-550);
+}
+
+.info__people > input {
+  /* icon $ */
+  background-image: url("../images/icon-person.svg");
+}
+
+/* ---=== SECTION RESULTAT ===--- */
+
+/* *========================================
+      * MEDIA *
+*======================================== */
+/* ---=== TABLET ===--- */
+@media (min-width: 768px) {
+  .container {
+    max-width: 38rem; /* 608px */
+    border-radius: 25px;
+    padding: 3rem 5rem;
+  }
+
+  .info__btn {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---=== DESKTOP ===--- */
+@media (min-width: 1440px) {
+  .img-title {
+    top: 163px;
+  }
+
+  .container {
+    min-width: 57.5rem; /* 920px */
+    margin-top: 19rem; /* 304px */
+    padding: 2rem 2rem;
+  }
+}
