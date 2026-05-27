@@ -68,7 +68,6 @@ h2 {
 }
 
 button {
-  appearance: none;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -117,7 +116,6 @@ input {
   background-color: var(--color-grey-50);
   color: var(--color-green-900);
   border-radius: 5px;
-  cursor: pointer;
 }
 input:hover,
 input:focus-visible {

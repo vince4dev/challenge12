@@ -41,7 +41,7 @@ function calculation() {
     const tipTotal = (numBill * tipPercent) / 100; // total tip
     const perPersonTip = tipTotal / numPeopleNbr; // tip per person
 
-    const totalBillWithTip = numBill / numPeopleNbr + perPersonTip; // total amount per person
+    const totalBillWithTip = numBill / numPeopleNbr + perPersonTip; // total amount + tip per person
 
     //* Formatted display
     tipAmountEl.textContent = `$${perPersonTip.toFixed(2)}`;
@@ -57,12 +57,6 @@ function calculation() {
 // -----------------------------------------------------------------------------
 //* Input bill
 billAmountEl.addEventListener("input", calculation);
-
-//* Input custom tip
-tipCustomEl.addEventListener("input", () => {
-  percentSelected = 0;
-  calculation();
-});
 
 //* Input people number
 peopleNbrEl.addEventListener("input", () => {
@@ -146,6 +140,8 @@ btnPercentEls.forEach((btn) => {
 // --- When the custom input changes: disable the buttons ---
 // -----------------------------------------------------------------------------
 tipCustomEl.addEventListener("input", () => {
+  percentSelected = 0;
+
   //* Remove the active component from each button
   btnRemoveActive();
 
