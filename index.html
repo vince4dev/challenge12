@@ -31,7 +31,12 @@
           <div class="info__bill">
             <div class="info__title">
               <h2>Bill</h2>
-              <span class="error-msg"></span>
+              <span
+                id="bill-error"
+                class="error-msg"
+                role="alert"
+                aria-live="assertive"
+              ></span>
             </div>
             <input
               id="bill-amount"
@@ -40,6 +45,7 @@
               type="text"
               placeholder="0"
               aria-label="field to enter the bill"
+              aria-describedby="bill-error"
             />
           </div>
           <div class="info__tip">
@@ -93,7 +99,12 @@
           <div class="info__people">
             <div class="info__title">
               <h2>Number of People</h2>
-              <span class="error-msg"></span>
+              <span
+                id="people-error"
+                class="error-msg"
+                role="alert"
+                aria-live="assertive"
+              ></span>
             </div>
             <input
               id="people-nbr"
@@ -102,6 +113,7 @@
               type="text"
               placeholder="0"
               aria-label="field to enter the number of people"
+              aria-describedby="people-error"
             />
           </div>
         </section>

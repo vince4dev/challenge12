@@ -10,17 +10,7 @@ const btnReset = document.querySelector(".btn__reset"); // button reset
 const btnPercentEls = document.querySelectorAll(".btn__percent"); // Retrieve all percentage buttons
 const numericInputs = document.querySelectorAll(".numeric-only");
 
-// -----------------------------------------------------------------------------
-// --- Selected percent value button ---
-// -----------------------------------------------------------------------------
 let percentSelected = 0;
-
-//* Listener for percentage buttons
-btnPercentEls.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    percentSelected = Number(btn.dataset.percent);
-  });
-});
 
 // -----------------------------------------------------------------------------
 // --- Calculation function ---
@@ -51,7 +41,7 @@ function calculation() {
     const tipTotal = (numBill * tipPercent) / 100; // total tip
     const perPersonTip = tipTotal / numPeopleNbr; // tip per person
 
-    const totalBillWithTip = numBill / numPeopleNbr; // total amount per person
+    const totalBillWithTip = numBill / numPeopleNbr + perPersonTip; // total amount per person
 
     //* Formatted display
     tipAmountEl.textContent = `$${perPersonTip.toFixed(2)}`;
@@ -121,6 +111,8 @@ function resetResults() {
 // -----------------------------------------------------------------------------
 btnPercentEls.forEach((btn) => {
   btn.addEventListener("click", () => {
+    percentSelected = Number(btn.dataset.percent);
+
     const isActive = btn.classList.contains("active");
 
     //* Remove "active" from all buttons except the one that is already active.
@@ -269,10 +261,10 @@ const runValidators = (...fns) => fns.every((fn) => fn());
 
 const billValidator = validator(billAmountEl, {
   message: "Can't be zero",
-  check: (value) => value !== 0 && Number(value) > 0,
+  check: (value) => Number(value) !== 0 && Number(value) > 0,
 });
 
 const peopleValidator = validator(peopleNbrEl, {
   message: "Can't be zero",
-  check: (value) => value !== 0 && Number(value) > 0,
+  check: (value) => Number(value) !== 0 && Number(value) > 0,
 });
