@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 
     <!-- Javascript -->
-    <script src="./assets/js/calcul.js"></script>
+    <script src="./assets/js/calcul.js" defer></script>
 
     <title>Frontend Mentor | Tip calculator app</title>
   </head>
@@ -29,50 +29,101 @@
       <article class="container">
         <section class="info">
           <div class="info__bill">
-            <h2>Bill</h2>
+            <div class="info__title">
+              <h2>Bill</h2>
+              <span class="error-msg"></span>
+            </div>
             <input
+              id="bill-amount"
+              class="numeric-only"
+              inputmode="numeric"
               type="text"
               placeholder="0"
-              aria-label="field to enter the addition"
+              aria-label="field to enter the bill"
             />
           </div>
           <div class="info__tip">
             <h2>Select Tip %</h2>
             <div class="info__btn">
-              <button class="btn">5%</button>
-              <button class="btn">10%</button>
-              <button class="btn">15%</button>
-              <button class="btn">25%</button>
-              <button class="btn">50%</button>
+              <button
+                class="btn__percent btn"
+                aria-selected="false"
+                data-percent="5"
+              >
+                5%
+              </button>
+              <button
+                class="btn__percent btn"
+                aria-selected="false"
+                data-percent="10"
+              >
+                10%
+              </button>
+              <button
+                class="btn__percent btn"
+                aria-selected="false"
+                data-percent="15"
+              >
+                15%
+              </button>
+              <button
+                class="btn__percent btn"
+                aria-selected="false"
+                data-percent="25"
+              >
+                25%
+              </button>
+              <button
+                class="btn__percent btn"
+                aria-selected="false"
+                data-percent="50"
+              >
+                50%
+              </button>
               <input
                 id="tip-custom"
-                class="btn__custom"
+                class="numeric-only"
+                inputmode="numeric"
                 type="text"
                 placeholder="Custom"
+                aria-label="field to enter the custom percent"
               />
             </div>
           </div>
           <div class="info__people">
-            <h2>Number of People</h2>
-            <input type="text" placeholder="0" />
+            <div class="info__title">
+              <h2>Number of People</h2>
+              <span class="error-msg"></span>
+            </div>
+            <input
+              id="people-nbr"
+              class="numeric-only"
+              inputmode="numeric"
+              type="text"
+              placeholder="0"
+              aria-label="field to enter the number of people"
+            />
           </div>
         </section>
-        <section class="result">
-          <div class="result__tip">
-            <h2>
-              Tip Amount <br />
-              <span>/ person</span>
-            </h2>
-            <p class="result__tip-sum">$0.00</p>
+
+        <section class="results">
+          <div class="result__text">
+            <div class="result">
+              <div class="result__field">
+                <h2>Tip Amount</h2>
+                <span>/ person</span>
+              </div>
+              <p id="tip-amount" class="result__sum">$0.00</p>
+            </div>
+            <div class="result">
+              <div class="result__field">
+                <h2>Total</h2>
+                <span>/ person</span>
+              </div>
+              <p id="total-amount" class="result__sum">$0.00</p>
+            </div>
           </div>
-          <div class="result__total">
-            <h2>
-              Total <br />
-              <span>/ person</span>
-            </h2>
-            <p class="result__total-sum">$0.00</p>
-          </div>
-          <button class="btn">RESET</button>
+          <button class="btn__reset btn" disabled>RESET</button>
         </section>
       </article>
     </main>
