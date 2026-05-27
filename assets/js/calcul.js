@@ -109,13 +109,6 @@ function btnRemoveActive() {
     b.setAttribute("aria-selected", "false");
   });
 }
-// //* Reset aria-selected
-// function btnArSelToFalse() {
-//   btnPercentEls.forEach((b) => {
-//     b.classList.remove("active");
-//     b.setAttribute("aria-selected", "false");
-//   });
-// }
 
 //* Reset people number
 function resetResults() {
