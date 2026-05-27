@@ -11,6 +11,7 @@ const btnPercentEls = document.querySelectorAll(".btn__percent"); // Retrieve al
 const numericInputs = document.querySelectorAll(".numeric-only");
 
 let percentSelected = 0;
+const MAX_LEN = 9; // Maximum length of inputs
 
 // -----------------------------------------------------------------------------
 // --- Calculation function ---
@@ -41,11 +42,11 @@ function calculation() {
     const tipTotal = (numBill * tipPercent) / 100; // total tip
     const billTotal = numBill + tipTotal;
 
-    const TipPerPerson = tipTotal / numPeopleNbr; // tip per person
+    const tipPerPerson = tipTotal / numPeopleNbr; // tip per person
     const billPerPerson = billTotal / numPeopleNbr; // total amount + tip per person
 
     //* Formatted display
-    tipAmountEl.textContent = `$${TipPerPerson.toFixed(2)}`;
+    tipAmountEl.textContent = `$${tipPerPerson.toFixed(2)}`;
     totalAmountEl.textContent = `$${billPerPerson.toFixed(2)}`;
 
     //* Activate the reset button
@@ -91,7 +92,7 @@ btnReset.addEventListener("click", () => {
 function btnRemoveActive() {
   btnPercentEls.forEach((b) => {
     b.classList.remove("active");
-    b.setAttribute("aria-checked", "false");
+    b.setAttribute("aria-pressed", "false");
   });
 }
 
@@ -117,7 +118,7 @@ btnPercentEls.forEach((btn) => {
     btn.classList.toggle("active");
 
     if (!isActive) {
-      btn.setAttribute("aria-checked", "true");
+      btn.setAttribute("aria-pressed", "true");
     }
 
     //* Retrieve the value stored in data-percent
@@ -182,8 +183,6 @@ const addOutlineError = (input) => {
 
 // --- Numeric input only ----------------------------
 numericInputs.forEach((input) => {
-  const MAX_LEN = 9;
-
   input.addEventListener("keydown", (e) => {
     const key = e.key;
 
@@ -217,6 +216,12 @@ numericInputs.forEach((input) => {
   input.addEventListener("input", (e) => {
     //* Keep only the numbers
     let cleaned = input.value.replace(/[^0-9\.]/g, "");
+
+    //* 2. Keep only one point
+    const parts = cleaned.split(".");
+    if (parts.length > 2) {
+      cleaned = parts[0] + "." + parts.slice(1).join("");
+    }
 
     //* Limit to MAX_LEN
     if (cleaned.length > MAX_LEN) {
