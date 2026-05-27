@@ -39,13 +39,14 @@ function calculation() {
   //* Calculations
   if (numBill !== 0 && numPeopleNbr !== 0) {
     const tipTotal = (numBill * tipPercent) / 100; // total tip
-    const perPersonTip = tipTotal / numPeopleNbr; // tip per person
+    const billTotal = numBill + tipTotal;
 
-    const totalBillWithTip = numBill / numPeopleNbr + perPersonTip; // total amount + tip per person
+    const TipPerPerson = tipTotal / numPeopleNbr; // tip per person
+    const billPerPerson = billTotal / numPeopleNbr; // total amount + tip per person
 
     //* Formatted display
-    tipAmountEl.textContent = `$${perPersonTip.toFixed(2)}`;
-    totalAmountEl.textContent = `$${totalBillWithTip.toFixed(2)}`;
+    tipAmountEl.textContent = `$${TipPerPerson.toFixed(2)}`;
+    totalAmountEl.textContent = `$${billPerPerson.toFixed(2)}`;
 
     //* Activate the reset button
     btnReset.disabled = false;
@@ -90,7 +91,7 @@ btnReset.addEventListener("click", () => {
 function btnRemoveActive() {
   btnPercentEls.forEach((b) => {
     b.classList.remove("active");
-    b.setAttribute("aria-selected", "false");
+    b.setAttribute("aria-checked", "false");
   });
 }
 
@@ -105,8 +106,6 @@ function resetResults() {
 // -----------------------------------------------------------------------------
 btnPercentEls.forEach((btn) => {
   btn.addEventListener("click", () => {
-    percentSelected = Number(btn.dataset.percent);
-
     const isActive = btn.classList.contains("active");
 
     //* Remove "active" from all buttons except the one that is already active.
@@ -118,7 +117,7 @@ btnPercentEls.forEach((btn) => {
     btn.classList.toggle("active");
 
     if (!isActive) {
-      btn.setAttribute("aria-selected", "true");
+      btn.setAttribute("aria-checked", "true");
     }
 
     //* Retrieve the value stored in data-percent
